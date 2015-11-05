@@ -1,5 +1,10 @@
 package br.univel;
 
+/**
+ * Usuario (Entidade usuariio com as informações dos usuarios do sistema)
+ * Data: 04-11-2015 21:50
+ * @author ggsgyamakawa
+ */
 public class Usuario {
 	
 	private int id;

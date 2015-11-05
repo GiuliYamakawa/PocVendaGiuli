@@ -1,5 +1,11 @@
 package br.univel;
 
+/**
+ * Cliente (Entidade cliente com as informações dos clientes do sistema)
+ * Data: 04-11-2015 21:30
+ * @author ggsgyamakawa
+ */
+
 public class Cliente {
 	
 	private int id;
