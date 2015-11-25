@@ -1,25 +1,39 @@
 package br.univel.tela;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JLabel;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.JTextField;
+
 import java.awt.FlowLayout;
+
 import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import br.univel.enums.Estados;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 public class CadCliente extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -413658732955104121L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -30,10 +44,9 @@ public class CadCliente extends JFrame {
 	private JPanel panel;
 	private JRadioButton rdbtnFeminino;
 	private JRadioButton rdbtnMasculino;
-	private JComboBox comboBox;
+	private JComboBox<String> cbEstado;
 	private JPanel panel_1;
 	private JButton btnSalvar;
-	private JButton btnPesquisar;
 	private JButton btnDeletar;
 	private JScrollPane scrollPane;
 	private JTable table;
@@ -58,7 +71,7 @@ public class CadCliente extends JFrame {
 	 * Create the frame.
 	 */
 	public CadCliente() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setAlwaysOnTop(true);
 		setBounds(100, 100, 543, 392);
 		contentPane = new JPanel();
@@ -169,14 +182,19 @@ public class CadCliente extends JFrame {
 		gbc_lblEstado.gridy = 5;
 		contentPane.add(lblEstado, gbc_lblEstado);
 		
-		comboBox = new JComboBox();
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.gridwidth = 2;
-		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
-		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 1;
-		gbc_comboBox.gridy = 5;
-		contentPane.add(comboBox, gbc_comboBox);
+		cbEstado = new JComboBox<String>();
+		GridBagConstraints gbc_cbEstado = new GridBagConstraints();
+		gbc_cbEstado.gridwidth = 2;
+		gbc_cbEstado.insets = new Insets(0, 0, 5, 0);
+		gbc_cbEstado.fill = GridBagConstraints.HORIZONTAL;
+		gbc_cbEstado.gridx = 1;
+		gbc_cbEstado.gridy = 5;
+		
+		String[] estados = Estados.names();
+		for(int i=0; i<estados.length; i++){
+			cbEstado.addItem(estados[i]);
+		}
+		contentPane.add(cbEstado, gbc_cbEstado);
 		
 		JLabel lblEnail = new JLabel("E-mail");
 		GridBagConstraints gbc_lblEnail = new GridBagConstraints();
@@ -198,6 +216,7 @@ public class CadCliente extends JFrame {
 		
 		JLabel lblGnero = new JLabel("G\u00EAnero");
 		GridBagConstraints gbc_lblGnero = new GridBagConstraints();
+		gbc_lblGnero.anchor = GridBagConstraints.WEST;
 		gbc_lblGnero.insets = new Insets(0, 0, 5, 5);
 		gbc_lblGnero.gridx = 0;
 		gbc_lblGnero.gridy = 7;
@@ -230,10 +249,13 @@ public class CadCliente extends JFrame {
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+			}
+		});
 		panel_1.add(btnSalvar);
-		
-		btnPesquisar = new JButton("Pesquisar");
-		panel_1.add(btnPesquisar);
 		
 		btnDeletar = new JButton("Deletar");
 		panel_1.add(btnDeletar);

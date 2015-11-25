@@ -1,4 +1,4 @@
-package br.univel;
+package br.univel.model;
 
 /**
  * Usuario (Entidade usuariio com as informações dos usuarios do sistema)

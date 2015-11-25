@@ -1,6 +1,9 @@
-package br.univel;
+package br.univel.model;
 
 import java.math.BigDecimal;
+
+import br.univel.enums.Categoria;
+import br.univel.enums.Unidade;
 
 /**
  * Produto (Entidade produto com as informações dos produtos do sistema)

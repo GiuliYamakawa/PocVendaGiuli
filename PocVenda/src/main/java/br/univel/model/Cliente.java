@@ -1,4 +1,7 @@
-package br.univel;
+package br.univel.model;
+
+import br.univel.enums.Estados;
+import br.univel.enums.Genero;
 
 /**
  * Cliente (Entidade cliente com as informações dos clientes do sistema)
@@ -12,7 +15,7 @@ public class Cliente {
 	private String nome;
 	private String telefone;
 	private String cidade;
-	private Estado estado;
+	private Estados estado;
 	private String email;
 	private Genero genero;
 	public int getId() {
@@ -39,10 +42,10 @@ public class Cliente {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
-	public Estado getEstado() {
+	public Estados getEstado() {
 		return estado;
 	}
-	public void setEstado(Estado estado) {
+	public void setEstado(Estados estado) {
 		this.estado = estado;
 	}
 	public String getEmail() {

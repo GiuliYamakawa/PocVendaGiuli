@@ -1,25 +1,26 @@
 package br.univel.tela;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
+import javax.swing.WindowConstants;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Principal extends JFrame {
 
+	private static final long serialVersionUID = -2999372076212891622L;
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -52,8 +53,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmCadastro_1 = new JMenuItem("Cadastro");
 		mntmCadastro_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFrame frame = new JFrame("Clientes");
-				//frame.setSi
+				CadUsuario frame = new CadUsuario();
 				frame.setVisible(true);
 			}
 		});
@@ -66,6 +66,12 @@ public class Principal extends JFrame {
 		menuBar.add(mnClientes);
 		
 		JMenuItem mntmCadastro = new JMenuItem("Cadastro");
+		mntmCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CadCliente frame = new CadCliente();
+				frame.setVisible(true);
+			}
+		});
 		mnClientes.add(mntmCadastro);
 		
 		JMenuItem mntmRelatrios = new JMenuItem("Relat\u00F3rios");
@@ -75,6 +81,12 @@ public class Principal extends JFrame {
 		menuBar.add(mnProdutos);
 		
 		JMenuItem mntmCadastro_2 = new JMenuItem("Cadastro");
+		mntmCadastro_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CadProduto frame = new CadProduto();
+				frame.setVisible(true);
+			}
+		});
 		mnProdutos.add(mntmCadastro_2);
 		
 		JMenuItem mntmRelatrios_2 = new JMenuItem("Relat\u00F3rios");
@@ -84,6 +96,13 @@ public class Principal extends JFrame {
 		menuBar.add(mnVenda);
 		
 		JMenuItem mntmCadastro_3 = new JMenuItem("Cadastro");
+		mntmCadastro_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CadVenda frame = new CadVenda();
+				frame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+				frame.setVisible(true);
+			}
+		});
 		mnVenda.add(mntmCadastro_3);
 		
 		JMenuItem mntmRelatrios_3 = new JMenuItem("Relat\u00F3rios");

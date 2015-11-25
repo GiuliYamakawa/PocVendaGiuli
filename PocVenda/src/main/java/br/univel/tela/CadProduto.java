@@ -1,24 +1,37 @@
 package br.univel.tela;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JLabel;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+
 import java.awt.FlowLayout;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import br.univel.enums.Categoria;
+import br.univel.enums.Estados;
+import br.univel.enums.Unidade;
+
 public class CadProduto extends JFrame {
 
+	private static final long serialVersionUID = 2321049365040612471L;
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -46,15 +59,15 @@ public class CadProduto extends JFrame {
 	 * Create the frame.
 	 */
 	public CadProduto() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setBounds(100, 100, 450, 351);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0, 0};
+		gbl_contentPane.columnWidths = new int[]{60, 0, 0};
 		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
@@ -100,13 +113,17 @@ public class CadProduto extends JFrame {
 		gbc_lblCategoria.gridy = 2;
 		contentPane.add(lblCategoria, gbc_lblCategoria);
 		
-		JComboBox comboBox = new JComboBox();
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
-		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 1;
-		gbc_comboBox.gridy = 2;
-		contentPane.add(comboBox, gbc_comboBox);
+		JComboBox cbCategoria = new JComboBox();
+		GridBagConstraints gbc_cbCategoria = new GridBagConstraints();
+		gbc_cbCategoria.insets = new Insets(0, 0, 5, 0);
+		gbc_cbCategoria.fill = GridBagConstraints.HORIZONTAL;
+		gbc_cbCategoria.gridx = 1;
+		gbc_cbCategoria.gridy = 2;
+		String[] enumv = Categoria.names();
+		for(int i=0; i<enumv.length; i++){
+			cbCategoria.addItem(enumv[i]);
+		}
+		contentPane.add(cbCategoria, gbc_cbCategoria);
 		
 		JLabel lblDescrio = new JLabel("Descri\u00E7\u00E3o");
 		GridBagConstraints gbc_lblDescrio = new GridBagConstraints();
@@ -133,13 +150,17 @@ public class CadProduto extends JFrame {
 		gbc_lblUnidade.gridy = 4;
 		contentPane.add(lblUnidade, gbc_lblUnidade);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
-		gbc_comboBox_1.insets = new Insets(0, 0, 5, 0);
-		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_1.gridx = 1;
-		gbc_comboBox_1.gridy = 4;
-		contentPane.add(comboBox_1, gbc_comboBox_1);
+		JComboBox cbUnidade = new JComboBox();
+		GridBagConstraints gbc_cbUnidade = new GridBagConstraints();
+		gbc_cbUnidade.insets = new Insets(0, 0, 5, 0);
+		gbc_cbUnidade.fill = GridBagConstraints.HORIZONTAL;
+		gbc_cbUnidade.gridx = 1;
+		gbc_cbUnidade.gridy = 4;
+		String[] enumUnidade = Unidade.names();
+		for(int i=0; i<enumUnidade.length; i++){
+			cbUnidade.addItem(enumUnidade[i]);
+		}
+		contentPane.add(cbUnidade, gbc_cbUnidade);
 		
 		JLabel lblCusto = new JLabel("Custo");
 		GridBagConstraints gbc_lblCusto = new GridBagConstraints();
@@ -169,12 +190,18 @@ public class CadProduto extends JFrame {
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		panel.add(btnSalvar);
 		
-		JButton btnPesquisar = new JButton("Pesquisar");
-		panel.add(btnPesquisar);
-		
 		JButton btnDeletar = new JButton("Deletar");
+		btnDeletar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		panel.add(btnDeletar);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -188,6 +215,11 @@ public class CadProduto extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+	}
+
+	private void carregar() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
