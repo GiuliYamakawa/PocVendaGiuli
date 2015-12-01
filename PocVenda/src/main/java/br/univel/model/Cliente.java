@@ -18,6 +18,7 @@ public class Cliente {
 	private Estados estado;
 	private String email;
 	private Genero genero;
+	
 	public int getId() {
 		return id;
 	}

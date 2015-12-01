@@ -23,24 +23,24 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import br.univel.dao.ClienteDAO;
 import br.univel.enums.Estados;
+import br.univel.enums.Genero;
+import br.univel.model.Cliente;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class CadCliente extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -413658732955104121L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_6;
+	private JTextField txtID;
+	private JTextField txtNome;
+	private JTextField txtTelefone;
+	private JTextField txtEndereco;
+	private JTextField txtCidade;
+	private JTextField txtEmail;
 	private JPanel panel;
 	private JRadioButton rdbtnFeminino;
 	private JRadioButton rdbtnMasculino;
@@ -50,6 +50,7 @@ public class CadCliente extends JFrame {
 	private JButton btnDeletar;
 	private JScrollPane scrollPane;
 	private JTable table;
+	private ClienteDAO dao = new ClienteDAO();
 
 	/**
 	 * Launch the application.
@@ -92,15 +93,15 @@ public class CadCliente extends JFrame {
 		gbc_lblId.gridy = 0;
 		contentPane.add(lblId, gbc_lblId);
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 2;
-		gbc_textField.insets = new Insets(0, 0, 5, 0);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 0;
-		contentPane.add(textField, gbc_textField);
-		textField.setColumns(10);
+		txtID = new JTextField();
+		GridBagConstraints gbc_txtID = new GridBagConstraints();
+		gbc_txtID.gridwidth = 2;
+		gbc_txtID.insets = new Insets(0, 0, 5, 0);
+		gbc_txtID.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtID.gridx = 1;
+		gbc_txtID.gridy = 0;
+		contentPane.add(txtID, gbc_txtID);
+		txtID.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Nome");
 		GridBagConstraints gbc_lblNome = new GridBagConstraints();
@@ -110,15 +111,15 @@ public class CadCliente extends JFrame {
 		gbc_lblNome.gridy = 1;
 		contentPane.add(lblNome, gbc_lblNome);
 		
-		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.gridwidth = 2;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 1;
-		gbc_textField_1.gridy = 1;
-		contentPane.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		txtNome = new JTextField();
+		GridBagConstraints gbc_txtNome = new GridBagConstraints();
+		gbc_txtNome.gridwidth = 2;
+		gbc_txtNome.insets = new Insets(0, 0, 5, 0);
+		gbc_txtNome.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtNome.gridx = 1;
+		gbc_txtNome.gridy = 1;
+		contentPane.add(txtNome, gbc_txtNome);
+		txtNome.setColumns(10);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
 		GridBagConstraints gbc_lblTelefone = new GridBagConstraints();
@@ -128,15 +129,15 @@ public class CadCliente extends JFrame {
 		gbc_lblTelefone.gridy = 2;
 		contentPane.add(lblTelefone, gbc_lblTelefone);
 		
-		textField_2 = new JTextField();
-		GridBagConstraints gbc_textField_2 = new GridBagConstraints();
-		gbc_textField_2.gridwidth = 2;
-		gbc_textField_2.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_2.gridx = 1;
-		gbc_textField_2.gridy = 2;
-		contentPane.add(textField_2, gbc_textField_2);
-		textField_2.setColumns(10);
+		txtTelefone = new JTextField();
+		GridBagConstraints gbc_txtTelefone = new GridBagConstraints();
+		gbc_txtTelefone.gridwidth = 2;
+		gbc_txtTelefone.insets = new Insets(0, 0, 5, 0);
+		gbc_txtTelefone.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtTelefone.gridx = 1;
+		gbc_txtTelefone.gridy = 2;
+		contentPane.add(txtTelefone, gbc_txtTelefone);
+		txtTelefone.setColumns(10);
 		
 		JLabel lblEn = new JLabel("Endere\u00E7o");
 		GridBagConstraints gbc_lblEn = new GridBagConstraints();
@@ -146,15 +147,15 @@ public class CadCliente extends JFrame {
 		gbc_lblEn.gridy = 3;
 		contentPane.add(lblEn, gbc_lblEn);
 		
-		textField_3 = new JTextField();
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.gridwidth = 2;
-		gbc_textField_3.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.gridx = 1;
-		gbc_textField_3.gridy = 3;
-		contentPane.add(textField_3, gbc_textField_3);
-		textField_3.setColumns(10);
+		txtEndereco = new JTextField();
+		GridBagConstraints gbc_txtEndereco = new GridBagConstraints();
+		gbc_txtEndereco.gridwidth = 2;
+		gbc_txtEndereco.insets = new Insets(0, 0, 5, 0);
+		gbc_txtEndereco.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtEndereco.gridx = 1;
+		gbc_txtEndereco.gridy = 3;
+		contentPane.add(txtEndereco, gbc_txtEndereco);
+		txtEndereco.setColumns(10);
 		
 		JLabel lblCidade = new JLabel("Cidade");
 		GridBagConstraints gbc_lblCidade = new GridBagConstraints();
@@ -164,15 +165,15 @@ public class CadCliente extends JFrame {
 		gbc_lblCidade.gridy = 4;
 		contentPane.add(lblCidade, gbc_lblCidade);
 		
-		textField_4 = new JTextField();
-		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.gridwidth = 2;
-		gbc_textField_4.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 1;
-		gbc_textField_4.gridy = 4;
-		contentPane.add(textField_4, gbc_textField_4);
-		textField_4.setColumns(10);
+		txtCidade = new JTextField();
+		GridBagConstraints gbc_txtCidade = new GridBagConstraints();
+		gbc_txtCidade.gridwidth = 2;
+		gbc_txtCidade.insets = new Insets(0, 0, 5, 0);
+		gbc_txtCidade.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtCidade.gridx = 1;
+		gbc_txtCidade.gridy = 4;
+		contentPane.add(txtCidade, gbc_txtCidade);
+		txtCidade.setColumns(10);
 		
 		JLabel lblEstado = new JLabel("Estado");
 		GridBagConstraints gbc_lblEstado = new GridBagConstraints();
@@ -204,15 +205,15 @@ public class CadCliente extends JFrame {
 		gbc_lblEnail.gridy = 6;
 		contentPane.add(lblEnail, gbc_lblEnail);
 		
-		textField_6 = new JTextField();
-		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
-		gbc_textField_6.gridwidth = 2;
-		gbc_textField_6.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_6.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_6.gridx = 1;
-		gbc_textField_6.gridy = 6;
-		contentPane.add(textField_6, gbc_textField_6);
-		textField_6.setColumns(10);
+		txtEmail = new JTextField();
+		GridBagConstraints gbc_txtEmail = new GridBagConstraints();
+		gbc_txtEmail.gridwidth = 2;
+		gbc_txtEmail.insets = new Insets(0, 0, 5, 0);
+		gbc_txtEmail.fill = GridBagConstraints.HORIZONTAL;
+		gbc_txtEmail.gridx = 1;
+		gbc_txtEmail.gridy = 6;
+		contentPane.add(txtEmail, gbc_txtEmail);
+		txtEmail.setColumns(10);
 		
 		JLabel lblGnero = new JLabel("G\u00EAnero");
 		GridBagConstraints gbc_lblGnero = new GridBagConstraints();
@@ -251,8 +252,18 @@ public class CadCliente extends JFrame {
 		btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
+				Cliente c = new Cliente();
+				c.setNome(txtNome.getText());
+				c.setCidade(txtCidade.getText());
+				c.setEmail(txtEmail.getText());
+				if(rdbtnFeminino.isSelected()){
+					c.setGenero(Genero.FEMININO);
+				} else {
+					c.setGenero(Genero.MASCULINO);
+				}
+				c.setEstado(Estados.valueOf(cbEstado.getSelectedItem().toString()));
+				c.setTelefone(txtTelefone.getText());
+				dao.inserir(c);
 			}
 		});
 		panel_1.add(btnSalvar);

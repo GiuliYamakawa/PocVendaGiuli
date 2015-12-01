@@ -8,7 +8,7 @@ public class Banco {
 	
 	static String user = "postgres";
 	static String pass = "univel";
-	static String database = "testdb";
+	static String database = "PocVenda";
 	static String host = "localhost";
 	static String porta = "5432";
 	static Connection conexao;
@@ -33,8 +33,5 @@ public class Banco {
 		}
 	}
 	
-	public static void criarTabelas(){
-		
-	}
 	
 }
